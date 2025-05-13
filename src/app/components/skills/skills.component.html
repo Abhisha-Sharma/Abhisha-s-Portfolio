@@ -1,0 +1,62 @@
+<section class="section" [@fadeIn]>
+  <h2 class="section__title">Skills</h2>
+
+  <div class="skills-intro" [@slideInLeft]>
+    <p>Here are my technical skills and proficiency levels:</p>
+  </div>
+
+  <div [@staggerList]="skillCategories.length">
+    @for (category of skillCategories; track category.name) {
+    <div class="skill-category">
+      <h3 class="skill-category-name" [@slideInLeft]>{{ category.name }}</h3>
+
+      <mat-card class="skill-card" [@cardAnimation]>
+        <div [@staggerList]="category.skills.length">
+          @for (skill of category.skills; track skill.name) {
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="skill-name-icon">
+                <mat-icon [@iconPulse]>{{ skill.icon }}</mat-icon>
+                <h4>{{ skill.name }}</h4>
+              </div>
+              <span
+                class="skill-percentage"
+                [ngClass]="getProgressClass(skill.level)"
+                >{{ skill.level }}%</span
+              >
+            </div>
+            <div class="progress-container">
+              <mat-progress-bar
+                [@progressAnimation]
+                [color]="getProgressColor(skill.level)"
+                mode="determinate"
+                [value]="skill.level"
+                [ngClass]="getProgressClass(skill.level)"
+              >
+              </mat-progress-bar>
+              <div class="progress-labels">
+                <span>Beginner</span>
+                <span>Intermediate</span>
+                <span>Advanced</span>
+                <span>Expert</span>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </mat-card>
+    </div>
+    }
+  </div>
+
+  <div class="additional-skills" [@fadeIn]>
+    <h3>Learning Goals</h3>
+    <p>I'm constantly improving my skills and currently focusing on:</p>
+    <ul [@staggerList]="4">
+      <li>Advanced NgRx patterns and state management</li>
+      <li>Angular performance optimization</li>
+      <li>Advanced unit and integration testing</li>
+      <li>Responsive design best practices</li>
+    </ul>
+  </div>
+</section>

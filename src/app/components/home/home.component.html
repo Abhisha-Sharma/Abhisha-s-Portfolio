@@ -1,0 +1,46 @@
+<section class="hero" [@heroAnimation]>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="hero-greeting" [@fadeIn]>Hello, I'm</span>
+      <span class="hero-name" [@fadeIn]>{{ name }}</span>
+    </h1>
+    <h2 class="hero-subtitle" [@fadeIn]>{{ title }}</h2>
+    <div class="hero-details" [@staggerList]="'hero-details'">
+      <div class="hero-detail">
+        <mat-icon>location_on</mat-icon>
+        <span>{{ location }}</span>
+      </div>
+      <div class="hero-detail">
+        <mat-icon>email</mat-icon>
+        <span>{{ email }}</span>
+      </div>
+      <div class="hero-detail">
+        <mat-icon>phone</mat-icon>
+        <span>{{ phone }}</span>
+      </div>
+    </div>
+    <div class="hero-actions" [@staggerList]="'hero-actions'">
+      <a mat-raised-button color="primary" routerLink="/about">About Me</a>
+      <a mat-raised-button color="accent" routerLink="/contact">Contact Me</a>
+      <a mat-stroked-button href="assets/resume.pdf" target="_blank">
+        <mat-icon>download</mat-icon>
+        Download CV
+      </a>
+    </div>
+  </div>
+  <div class="hero-background-animation"></div>
+</section>
+
+<section class="intro-cards">
+  <div [@staggerList]="cards.length">
+    @for (card of cards; track card.title) {
+    <div class="card animate-card">
+      <h3>{{ card.title }}</h3>
+      <p>{{ card.description }}</p>
+      <a mat-button color="primary" [routerLink]="card.link">{{
+        card.linkText
+      }}</a>
+    </div>
+    }
+  </div>
+</section>

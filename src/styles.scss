@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use "@angular/material" as mat;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Global utility classes */
+.section {
+  margin-bottom: 3rem;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #3f51b5;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Responsive utils */
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.hide-on-desktop {
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}

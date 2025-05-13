@@ -1,0 +1,47 @@
+<section class="section" [@fadeIn]>
+  <h2 class="section__title">Education</h2>
+
+  <div class="education-timeline" [@staggerList]="educations.length">
+    @for (education of educations; track education.degree) {
+    <mat-card class="education-card" [@cardAnimation]>
+      <div class="education-icon" [@iconAnimation]>
+        <mat-icon>school</mat-icon>
+      </div>
+      <div class="education-content">
+        <h3 class="education-degree" [@slideInRight]>{{ education.degree }}</h3>
+        <div class="education-details" [@slideInRight]>
+          <h4 class="education-institution">{{ education.institution }}</h4>
+          <div class="education-meta">
+            <span class="education-location">
+              <mat-icon>location_on</mat-icon> {{ education.location }}
+            </span>
+            <span class="education-period">
+              <mat-icon>date_range</mat-icon> {{ education.period }}
+            </span>
+          </div>
+        </div>
+        @if (education.description) {
+        <p class="education-description" [@fadeIn]>
+          {{ education.description }}
+        </p>
+        }
+      </div>
+    </mat-card>
+    }
+  </div>
+
+  <div class="education-additional" [@fadeIn]>
+    <h3 [@slideInRight]>Continuing Education</h3>
+    <p [@fadeIn]>
+      In addition to my formal education, I'm actively pursuing online courses
+      and tutorials to enhance my frontend development skills, particularly
+      focusing on:
+    </p>
+    <ul [@staggerList]="4">
+      <li>Advanced Angular concepts</li>
+      <li>Modern UI/UX design principles</li>
+      <li>Web accessibility standards</li>
+      <li>Performance optimization techniques</li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<section class="section" [@fadeIn]>
+  <h2 class="section__title">About Me</h2>
+
+  <mat-card class="profile-card" [@cardAnimation]>
+    <div class="profile-content">
+      <div class="profile-image-container">
+        <!-- Placeholder for profile image -->
+        <div class="profile-image-placeholder">
+          <span>AS</span>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <h3 [@slideIn]>Abhisha Sharma</h3>
+        <h4 [@slideIn]>Frontend Angular Developer</h4>
+        <p class="profile-summary" [@slideIn]>{{ profileSummary }}</p>
+
+        <div class="profile-info" [@staggerList]="infoItems.length">
+          @for (item of infoItems; track item.label) {
+          <div class="info-item">
+            <strong>{{ item.label }}:</strong>
+            @if (item.link) {
+            <a [href]="item.link">{{ item.value }}</a>
+            } @else {
+            <span>{{ item.value }}</span>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <div class="about-description" [@fadeIn]>
+    <h3>My Journey</h3>
+    <p>
+      As an aspiring frontend developer, I am passionate about creating
+      user-friendly and visually appealing interfaces. My journey in web
+      development began during my studies in Computer Science, and I have been
+      continuously expanding my knowledge and skills in modern frontend
+      technologies.
+    </p>
+
+    <p>
+      Currently working as a Trainee Frontend Angular Developer at Technofex,
+      I've been gaining valuable hands-on experience in Angular development,
+      state management with NgRx, and implementing UI components using Angular
+      Material. I'm particularly interested in responsive design and creating
+      accessible user experiences.
+    </p>
+
+    <p>
+      I believe in continuous learning and staying updated with the latest
+      technologies in the frontend ecosystem. My goal is to grow as a developer
+      and contribute to projects that make a positive impact through technology.
+    </p>
+  </div>
+</section>

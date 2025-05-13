@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="header">
+  <div class="logo" [@logoAnimation]>
+    <a routerLink="/">Abhisha Sharma</a>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <nav class="desktop-nav" [@navAnimation]>
+    @for (link of navLinks; track link.path) {
+    <a
+      mat-button
+      class="nav-item"
+      [routerLink]="[link.path]"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: link.path === '' }"
+    >
+      {{ link.label }}
+    </a>
+    }
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <button mat-icon-button class="mobile-menu-btn" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    @for (link of navLinks; track link.path) {
+    <a mat-menu-item [routerLink]="[link.path]">
+      {{ link.label }}
+    </a>
+    }
+  </mat-menu>
+</mat-toolbar>

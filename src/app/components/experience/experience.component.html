@@ -1,0 +1,63 @@
+<section class="section" [@fadeIn]>
+  <h2 class="section__title">Work Experience</h2>
+
+  <div [@staggerList]="experiences.length">
+    @for (experience of experiences; track experience.company) {
+    <mat-card class="experience-card" [@cardAnimation]>
+      <div class="experience-header">
+        <div class="experience-title">
+          <h3 [@slideInRight]>{{ experience.title }}</h3>
+          <h4 [@slideInRight]>{{ experience.company }}</h4>
+          <span class="experience-period" [@slideInRight]>{{
+            experience.period
+          }}</span>
+        </div>
+      </div>
+
+      <mat-divider class="divider"></mat-divider>
+
+      <div class="experience-body">
+        <h5>Responsibilities:</h5>
+        <ul
+          class="experience-list"
+          [@staggerList]="experience.description.length"
+        >
+          @for (item of experience.description; track item) {
+          <li>{{ item }}</li>
+          }
+        </ul>
+
+        <h5>Technologies Used:</h5>
+        <div
+          class="technology-chips"
+          [@chipAnimation]="experience.technologies.length"
+        >
+          @for (tech of experience.technologies; track tech) {
+          <mat-chip color="primary">{{ tech }}</mat-chip>
+          }
+        </div>
+      </div>
+    </mat-card>
+    }
+  </div>
+
+  <h2 class="section__title" [@fadeIn]>Projects</h2>
+
+  <div [@staggerList]="projects.length">
+    @for (project of projects; track project.name) {
+    <mat-card class="project-card" [@cardAnimation]>
+      <h3>{{ project.name }}</h3>
+      <p>{{ project.description }}</p>
+
+      <div
+        class="technology-chips"
+        [@chipAnimation]="project.technologies.length"
+      >
+        @for (tech of project.technologies; track tech) {
+        <mat-chip>{{ tech }}</mat-chip>
+        }
+      </div>
+    </mat-card>
+    }
+  </div>
+</section>

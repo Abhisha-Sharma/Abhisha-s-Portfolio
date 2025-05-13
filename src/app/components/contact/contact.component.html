@@ -1,0 +1,113 @@
+<section class="section">
+  <h2 class="section__title">Contact Me</h2>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>Get in Touch</h3>
+      <p>
+        Feel free to reach out to me for any inquiries, opportunities, or just
+        to say hello!
+      </p>
+
+      <div class="contact-cards">
+        @for (detail of contactDetails; track detail.label) {
+        <mat-card class="contact-card">
+          <mat-icon>{{ detail.icon }}</mat-icon>
+          <div class="contact-detail">
+            <h4>{{ detail.label }}</h4>
+            @if (detail.link) {
+            <a href="{{ detail.link }}">{{ detail.value }}</a>
+            } @else {
+            <span>{{ detail.value }}</span>
+            }
+          </div>
+        </mat-card>
+        }
+      </div>
+    </div>
+
+    <div class="contact-form-container">
+      <h3>Send a Message</h3>
+      <form
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        class="contact-form"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Your Name</mat-label>
+          <input matInput formControlName="name" placeholder="John Doe" />
+          <mat-error
+            *ngIf="
+              contactForm.get('name')?.invalid &&
+              contactForm.get('name')?.touched
+            "
+          >
+            Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="example@email.com"
+            type="email"
+          />
+          <mat-error
+            *ngIf="
+              contactForm.get('email')?.invalid &&
+              contactForm.get('email')?.touched
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Subject</mat-label>
+          <input
+            matInput
+            formControlName="subject"
+            placeholder="Job Opportunity"
+          />
+          <mat-error
+            *ngIf="
+              contactForm.get('subject')?.invalid &&
+              contactForm.get('subject')?.touched
+            "
+          >
+            Subject is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea
+            matInput
+            formControlName="message"
+            placeholder="Your message here..."
+            rows="5"
+          ></textarea>
+          <mat-error
+            *ngIf="
+              contactForm.get('message')?.invalid &&
+              contactForm.get('message')?.touched
+            "
+          >
+            Message must be at least 10 characters
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="contactForm.invalid"
+        >
+          <mat-icon>send</mat-icon> Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
